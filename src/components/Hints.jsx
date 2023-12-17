@@ -13,7 +13,7 @@ const Hints = ({ pokemon, errorCount }) => {
       setPercentage(0); // Evitar división por cero
     }
     setPercentage((errorCount / pokemonNameLength) * 100);
-   console.log('percentage:', percentage);
+   //console.log('percentage:', percentage);
   };
 
   return (

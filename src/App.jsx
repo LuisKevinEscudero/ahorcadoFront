@@ -14,7 +14,7 @@ function App() {
       
       // Emulación local con un objeto
       const mockPokemon = {
-        name: 'HO-OH',
+        name: 'AA-AA-AA',
         type: ['Electric', 'Flying'],
         region: 'Kanto',
         description: 'A cute and powerful Electric-type Pokémon.',
