@@ -6,10 +6,59 @@
 
 body {
   margin: 0;
-  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #C8DDF0;
   color: black;
   font-family: 'Pixelify Sans', sans-serif;
+}
+
+.hint-title {
+  font-weight: bold;
+  color: #001f3f; /* Color azul oscuro */
+}
+
+.hint-content {
+  margin-top: 4px;
+  font-size: 14px; /* Tamaño de texto más pequeño */
+  color: #001f3f; /* Color azul oscuro */
+}
+
+.hint-title.hint-small {
+  font-size: 17px; /* Tamaño de texto más pequeño */
+  font-weight: bold;
+  color: #136ac2; /* Color azul oscuro */
+}
+
+/* Estilo base para todos los recuadros de pista */
+.hint-box {
+  border: 2px solid #001f3f;
+  border-radius: 8px;
+
+  margin-bottom: 8px;
+}
+
+/* Estilo específico para el tipo de pista */
+.type-hint {
+  background-color: #ffd700;
+  height: 80px;
+}
+
+/* Estilo específico para la pista de región */
+.region-hint {
+  background-color: #87ceeb;
+  height: 80px;
+}
+
+/* Estilo específico para la pista de descripción */
+.description-hint {
+  background-color: #98fb98;
+  height: 80px;
+}
+
+/* Centra los recuadros de pista */
+.mt-8 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

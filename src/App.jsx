@@ -9,13 +9,22 @@ function App() {
 
   const handleStartGame = async () => {
     try {
-      const response = await fetch('http://localhost:8080/pokemon/random');
-      if (!response.ok) {
-        throw new Error('Error al obtener datos del Pokémon');
-      }
+      // Llamada a la API comentada
+      //const response = await fetch('http://localhost:8080/pokemon/random');
+      
+      // Emulación local con un objeto
+      const mockPokemon = {
+        name: 'HO-OH',
+        type: ['Electric', 'Flying'],
+        region: 'Kanto',
+        description: 'A cute and powerful Electric-type Pokémon.',
+        // Otros campos que puedas necesitar
+      };
 
-      const data = await response.json();
-      setPokemon(data);
+      // Llamada a la API comentada, y se reemplaza con la emulación local
+      //const data = await response.json();
+      //data.name = data.name.toUpperCase();
+      setPokemon(mockPokemon);
       setGameStarted(true);
     } catch (error) {
       console.error(error.message);
@@ -23,7 +32,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="bg-blue-100 h-screen flex items-center justify-center">
       {gameStarted ? (
         <Game pokemon={pokemon} />
       ) : (

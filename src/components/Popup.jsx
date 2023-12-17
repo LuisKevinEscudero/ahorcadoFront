@@ -1,12 +1,13 @@
 // components/Popup.jsx
 import React, { useState } from 'react';
-import ScrollWheel from 'react-scroll-wheel-datepicker';
 
 const Popup = ({ onClose, onSelectLetter }) => {
   const [selectedLetter, setSelectedLetter] = useState('');
 
-  const handleAccept = () => {
-    onSelectLetter(selectedLetter);
+  const handleLetterClick = (letter) => {
+    setSelectedLetter(letter);
+    // Llamar a onSelectLetter directamente al hacer clic en la letra
+    onSelectLetter(letter);
     onClose();
   };
 
@@ -15,18 +16,22 @@ const Popup = ({ onClose, onSelectLetter }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-6 rounded shadow-md">
-        <ScrollWheel
-          visibleItemCount={3}
-          onChange={(item) => setSelectedLetter(item)}
-          items={['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']}
-        />
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"  onClick={handleCancel}>
+      <div className="bg-white px-12 p-8 rounded-lg shadow-md overflow-y-auto max-h-96">
+        <div className="flex flex-col items-center mb-4">
+          {/* Renderizar botones para seleccionar letras */}
+          {Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ').map((letter) => (
+            <button
+              key={letter}
+              className={`my-1 py-2 px-10 text-sm rounded ${selectedLetter === letter ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
+              onClick={() => handleLetterClick(letter)}
+            >
+              {letter}
+            </button>
+          ))}
+        </div>
         <div className="mt-4 flex justify-end">
-          <button className="bg-green-500 text-white py-2 px-4 rounded mr-2" onClick={handleAccept}>
-            Aceptar
-          </button>
-          <button className="bg-gray-500 text-white py-2 px-4 rounded" onClick={handleCancel}>
+          <button className="bg-red-500 text-white py-2 px-4 rounded" onClick={handleCancel}>
             Cancelar
           </button>
         </div>
