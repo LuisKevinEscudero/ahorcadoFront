@@ -149,27 +149,28 @@ const Game = ({ pokemon: initialPokemon }) => {
   }
 
   return (
-    <div className="bg-blue-100 h-screen flex items-center justify-center m-auto">
-      <div className="flex flex-col items-center text-5xl font-bold">
-        <div>
-          <p>{formatPokemonName(pokemon.name)}</p>
-        </div>
-        <div>
-          {showPopup && (
-            <Popup
-              onClose={handleClosePopup}
-              onSelectLetter={handleAcceptLetter}
-            />
-          )}
-        </div>
-        <div>
-          <ErrorCounter count={errorCount} />
-        </div>
-        <div>
-          <Hints errorCount={errorCount} pokemon={pokemon} />
-        </div>
-      </div>
+<div className="bg-blue-100 h-screen flex items-center justify-center m-auto">
+  <div className="flex flex-col items-center text-5xl font-bold">
+    <div className="mb-4"> {/* Añadir margen inferior */}
+      <p>{formatPokemonName(pokemon.name)}</p>
     </div>
+    <div>
+      {showPopup && (
+        <Popup
+          onClose={handleClosePopup}
+          onSelectLetter={handleAcceptLetter}
+        />
+      )}
+    </div>
+    <div className="mb-4"> {/* Añadir margen inferior */}
+      <ErrorCounter count={errorCount} totalErrors={pokemon.name.length} />
+    </div>
+    <div>
+      <Hints errorCount={errorCount} pokemon={pokemon} />
+    </div>
+  </div>
+</div>
+
   );
 };
 
