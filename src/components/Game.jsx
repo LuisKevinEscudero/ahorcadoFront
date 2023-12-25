@@ -8,7 +8,8 @@ const initializeCorrectLetters = (pokemon) => {
   return Array(pokemon.name.length).fill('_');
 };
 
-const Game = ({ pokemon }) => {
+const Game = ({ pokemon: initialPokemon }) => {
+  const [pokemon, setPokemon] = useState(initialPokemon);
   const [showPopup, setShowPopup] = useState(false);
   const [selectedPosition, setSelectedPosition] = useState(null);
   const [correctLetters, setCorrectLetters] = useState(initializeCorrectLetters(pokemon));
@@ -102,7 +103,7 @@ const Game = ({ pokemon }) => {
       // Llamada a la API comentada, y se reemplaza con la emulación local
       const data = await response.json();
       data.name = data.name.toUpperCase();
-      pokemon = data;
+      setPokemon(data);
       console.log('pokemon:', pokemon);
       console.log('data:', data);
       setChangePokemon(!changePokemon);
@@ -125,7 +126,6 @@ const Game = ({ pokemon }) => {
   useEffect(() => {
     randomLetter(); 
   }, [gameWon, changePokemon]);
-  
 
   // Lógica para verificar si todas las letras han sido adivinadas
   useEffect(() => {
@@ -135,7 +135,7 @@ const Game = ({ pokemon }) => {
   }, [correctLetters]);
 
   if (errorCount >= pokemon.name.length) {
-    return <GameOverScreen onRestart={handleRestart} />;
+    return <GameOverScreen onRestart={handleRestart} pokemon={pokemon} />;
   }
 
   if (gameWon) {
