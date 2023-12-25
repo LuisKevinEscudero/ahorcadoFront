@@ -3,6 +3,7 @@ import Popup from './Popup';
 import Hints from './Hints';
 import GameOverScreen from './GameOverScreen';
 import GameWonScreen from './GameWonScreen';
+import ErrorCounter from './ErrorCounter';
 
 const initializeCorrectLetters = (pokemon) => {
   return Array(pokemon.name.length).fill('_');
@@ -66,6 +67,7 @@ const Game = ({ pokemon: initialPokemon }) => {
   };
 
   const handleAcceptLetter = (letter) => {
+    console.log('initialCorrectLetters:', correctLetters);
     if (selectedPosition !== null) {
       if (pokemon.name[selectedPosition] === letter) {
         setCorrectLetters((prevCorrectLetters) => {
@@ -107,6 +109,7 @@ const Game = ({ pokemon: initialPokemon }) => {
       console.log('pokemon:', pokemon);
       console.log('data:', data);
       setChangePokemon(!changePokemon);
+      setCorrectLetters(initializeCorrectLetters(data));
     } catch (error) {
       console.error(error.message);
     }
@@ -118,7 +121,9 @@ const Game = ({ pokemon: initialPokemon }) => {
     await apiCall();
     setShowPopup(false);
     setSelectedPosition(null);
-    setCorrectLetters(initializeCorrectLetters(pokemon));
+    console.log('pokemon nuevo:', pokemon.name);
+    
+    console.log('pokemon nuevo2:', pokemon.name);
     setErrorCount(0);
     setGameWon(false);
   };
@@ -144,7 +149,7 @@ const Game = ({ pokemon: initialPokemon }) => {
   }
 
   return (
-    <div className="bg-blue-100 h-screen flex items-center justify-center m-auto ">
+    <div className="bg-blue-100 h-screen flex items-center justify-center m-auto">
       <div className="flex flex-col items-center text-5xl font-bold">
         <div>
           <p>{formatPokemonName(pokemon.name)}</p>
@@ -156,6 +161,9 @@ const Game = ({ pokemon: initialPokemon }) => {
               onSelectLetter={handleAcceptLetter}
             />
           )}
+        </div>
+        <div>
+          <ErrorCounter count={errorCount} />
         </div>
         <div>
           <Hints errorCount={errorCount} pokemon={pokemon} />
