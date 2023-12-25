@@ -14,7 +14,7 @@ const Game = ({ pokemon }) => {
   const [correctLetters, setCorrectLetters] = useState(initializeCorrectLetters(pokemon));
   const [errorCount, setErrorCount] = useState(0);
   const [gameWon, setGameWon] = useState(false); // Nuevo estado para controlar la victoria
-
+  const [changePokemon, setChangePokemon] = useState(false);
 
   useEffect(() => {
     if(pokemon.name.includes('-')){
@@ -27,19 +27,15 @@ const Game = ({ pokemon }) => {
       }
     }
     randomLetter();
-  }, [pokemon.name]);
+  }, [pokemon.name, gameWon]);
 
-  const randomLetter = () => {
-    console.log('randomLetter');
-    
+  const randomLetter = () => {    
     if(!gameWon){
-      console.log('juego no ganado' );
       console.log('pokemon.name:', pokemon.name);
       const initialCorrectLetters = [...correctLetters];
       let randomIndex = 0;
       do {
         randomIndex = Math.floor(Math.random() * pokemon.name.length);
-        //console.log('randomIndex:', randomIndex);
       } while (pokemon.name[randomIndex] === '-');
       initialCorrectLetters[randomIndex] = pokemon.name[randomIndex];
       setCorrectLetters(initialCorrectLetters);
@@ -52,7 +48,6 @@ const Game = ({ pokemon }) => {
         key={index}
         className={`ml-6 cursor-pointer hover:shadow-md hover:filter hover:shadow-gray-700`}
         onClick={() => handleSelectLetter(index)}
-        // Agregar la propiedad "pointer-events" para deshabilitar clics en letras ya adivinadas
         style={{ pointerEvents: correctLetters[index] !== '_' ? 'none' : 'auto' }}
       >
         {correctLetters[index]}
@@ -90,9 +85,36 @@ const Game = ({ pokemon }) => {
     }
   };
 
-  const handleRestart = () => {
+  const apiCall = async () => {
+    try {
+      // Llamada a la API comentada
+      const response = await fetch('http://localhost:8080/pokemon/random');
+      
+      // Emulación local con un objeto
+      const mockPokemon = {
+        name: 'AA-AA-AA',
+        type: ['Electric', 'Flying'],
+        region: 'Kanto',
+        description: 'A cute and powerful Electric-type Pokémon.',
+        // Otros campos que puedas necesitar
+      };
+
+      // Llamada a la API comentada, y se reemplaza con la emulación local
+      const data = await response.json();
+      data.name = data.name.toUpperCase();
+      pokemon = data;
+      console.log('pokemon:', pokemon);
+      console.log('data:', data);
+      setChangePokemon(!changePokemon);
+    } catch (error) {
+      console.error(error.message);
+    }
+  };
+
+  const handleRestart = async () => {
     // Lógica de reinicio del juego
     console.log('Reiniciando el juego...');
+    await apiCall();
     setShowPopup(false);
     setSelectedPosition(null);
     setCorrectLetters(initializeCorrectLetters(pokemon));
@@ -101,11 +123,8 @@ const Game = ({ pokemon }) => {
   };
   
   useEffect(() => {
-    // Esta parte se ejecutará después de que el componente se haya renderizado y el estado se haya actualizado
-    console.log('gameWon después de reiniciar:', gameWon);
-    // Puedes agregar más lógica aquí si es necesario
-    randomLetter(); // Obtener una nueva letra aleatoria inicial
-  }, [gameWon]);
+    randomLetter(); 
+  }, [gameWon, changePokemon]);
   
 
   // Lógica para verificar si todas las letras han sido adivinadas

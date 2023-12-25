@@ -10,7 +10,7 @@ function App() {
   const handleStartGame = async () => {
     try {
       // Llamada a la API comentada
-      //const response = await fetch('http://localhost:8080/pokemon/random');
+      const response = await fetch('http://localhost:8080/pokemon/random');
       
       // Emulación local con un objeto
       const mockPokemon = {
@@ -22,9 +22,9 @@ function App() {
       };
 
       // Llamada a la API comentada, y se reemplaza con la emulación local
-      //const data = await response.json();
-      //data.name = data.name.toUpperCase();
-      setPokemon(mockPokemon);
+      const data = await response.json();
+      data.name = data.name.toUpperCase();
+      setPokemon(data);
       setGameStarted(true);
     } catch (error) {
       console.error(error.message);
