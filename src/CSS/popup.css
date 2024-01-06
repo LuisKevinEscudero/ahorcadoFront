@@ -1,0 +1,65 @@
+
+  /*
+  boton cancelar
+  */
+  .cancel-button-container {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  
+  .cancel-button {
+    background-color: #ef4444; /* Puedes ajustar el color según tu paleta */
+    color: #ffffff; /* Puedes ajustar el color según tu paleta */
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 0.25rem;
+  }
+
+/*-----------------------------------------------------------------------------*/
+  .letter-button {
+    margin-top: 1rem;
+    padding: 1rem 2rem 1rem 2rem;
+    border-radius: 0.25rem;
+    font-size: 1.5rem; /* Tamaño de fuente equivalente a text-sm en Tailwind */
+  }
+  
+  .selected-letter-button {
+    background-color: #3490dc; /* Puedes ajustar el color según tu paleta */
+    color: #ffffff; /* Puedes ajustar el color según tu paleta */
+  }
+  
+  .unselected-letter-button {
+    background-color: #e5e7eb; /* Puedes ajustar el color según tu paleta */
+    color: #4b5563; /* Puedes ajustar el color según tu paleta */
+  }
+
+  .letter-flex-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1rem; /* 1rem es equivalente a mb-4 en Tailwind */
+  }
+
+  .letter-card-container {
+    background-color: #ffffff;
+    padding: 2rem; /* Equivalente a px-12 y p-8 en Tailwind */
+    border-radius: 0.5rem; /* rounded-lg en Tailwind */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* shadow-md en Tailwind */
+    overflow-y: auto;
+    max-height: 24rem; /* max-h-96 en Tailwind */
+  }
+
+  .letter-overlay {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5); /* bg-black bg-opacity-50 en Tailwind */
+  }

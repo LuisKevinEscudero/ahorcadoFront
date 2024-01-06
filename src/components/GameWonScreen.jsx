@@ -1,21 +1,34 @@
 import React from 'react';
+import '../CSS/gameWonScreen.css';
 
-const GameWonScreen = ({ onRestart, pokemon }) => {
+const GameWonScreen = ({ onRestart, pokemon, isLoading }) => {
   return (
-    <div className="flex items-center justify-center h-screen text-5xl font-bold flex-col">
+    <div className="firstContainer">
       <p>Felicidades, has ganado el juego</p>
-      <h1 className="text-6xl font-bold mt-4">{pokemon.name}</h1>
+      <h1 className="name">{pokemon.name}</h1>
       <img
         src={pokemon.imageUrl}
         alt={pokemon.name}
-        className="mt-4 max-w-full max-h-60"
+        className="pokeImage"
       />
-      <button
-        className="bg-blue-500 text-white py-2 px-4 rounded mt-4"
-        onClick={onRestart}
-      >
-        Volver a Jugar
-      </button>
+      {isLoading ? (
+        <div className="loading-container">
+          <div className="loading-icon-container">
+            <div className="loading-icon"></div>
+          </div>
+          <p className="loading-text">Cargando...</p>
+        </div>
+      ) : (
+        <button
+          className={`playAgainButton ${
+            isLoading ? 'loading' : ''
+          }`}
+          onClick={onRestart}
+          disabled={isLoading}
+        >
+          {isLoading ? 'Cargando...' : 'Volver a Jugar'}
+        </button>
+      )}
     </div>
   );
 };

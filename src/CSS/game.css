@@ -1,0 +1,71 @@
+.formatPokemonNameSpan {
+  margin-left: 1.5rem;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease; /* Añade una transición de sombra */
+  max-width: 100%; /* Ajusta el ancho máximo del texto */
+  overflow: visible; /* Ajusta el desbordamiento del texto */
+}
+
+  
+  /* Estilos al pasar el mouse - hover:shadow-md */
+  .formatPokemonNameSpan:hover {
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -2px rgba(0, 0, 0, 0.7);
+    --tw-shadow-colored: 0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  }
+  
+  /* Estilos al pasar el mouse - hover:filter */
+  .formatPokemonNameSpan:hover:filter {
+    filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
+  }
+  
+  /* Estilos al pasar el mouse - hover:shadow-gray-700 */
+  .formatPokemonNameSpan:hover:shadow-gray-700 {
+    --tw-shadow-color: #374151;
+    --tw-shadow: 0 4px 6px -1px rgba(55, 65, 81, 0.5), 0 2px 4px -2px rgba(55, 65, 81, 0.7);
+    box-shadow: var(--tw-shadow);
+  }
+
+  .errorCounterDiv{
+    margin-bottom: 1rem;
+  }
+
+/* Estilos base para la primera división */
+.firstDiv {
+    background-color: rgba(219, 234, 254, 1);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Ajustado para dispositivos móviles */
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 600px) {
+    .firstDiv {
+        align-items: center; /* Alinear al principio en lugar de centrar verticalmente */
+        overflow: auto; /* Permitir desplazamiento vertical si es necesario */
+    }
+
+    .secondDiv {
+        font-size: 2rem; /* Ajustar el tamaño del texto para pantallas pequeñas */
+    }
+}
+
+/* Estilos para la segunda división */
+.secondDiv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 3rem;
+    line-height: 1;
+    font-weight: 700;
+}
+
+/* Estilos para la tercera división */
+.thirdDiv {
+    margin-bottom: 1rem;
+}

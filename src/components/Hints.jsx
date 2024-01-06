@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import HintDisplay from './HintDisplay';
+//import '../CSS/hints.css';
 
 const Hints = ({ pokemon, errorCount }) => {
   const pokemonNameLength = pokemon.name.length;

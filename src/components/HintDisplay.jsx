@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import '../CSS/hints.css';
 
 const HintDisplay = ({ title, content, threshold, percentage }) => {
 
@@ -12,13 +13,13 @@ const HintDisplay = ({ title, content, threshold, percentage }) => {
         let color = "";
         switch(title)  {
             case "Type":
-                color = "bg-red-500";
+                color = "type-hint";
                 break;
             case "Region":
-                color = "bg-yellow-500";
+                color = "region-hint";
                 break;
             case "Description":
-                color = "bg-green-500";
+                color = "description-hint";
                 break;    
         }
        setColorin(color);
@@ -28,7 +29,7 @@ const HintDisplay = ({ title, content, threshold, percentage }) => {
 
   return (
     <div
-      className={`hint-box py-2 px-10 flex flex-col items-center ${colorin} ${isVisible ? 'visible' : 'hidden'}`}
+      className={`hint-box ${colorin} ${isVisible ? 'visible' : 'hidden'}`}
     >
       <p className="hint-title hint-small">{title}:</p>
       <p className="hint-content flex flex-col ">{content}</p>

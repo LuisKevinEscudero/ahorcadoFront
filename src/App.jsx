@@ -2,16 +2,21 @@
 import React, { useState } from 'react';
 import Start from './components/Start';
 import Game from './components/Game';
+import './CSS/animations.css'; 
+
 
 function App() {
+  const [loading, setLoading] = useState(false);
   const [gameStarted, setGameStarted] = useState(false);
   const [pokemon, setPokemon] = useState(null);
 
   const handleStartGame = async () => {
     try {
+      setLoading(true);
+
       // Llamada a la API comentada
       const response = await fetch('http://localhost:8080/pokemon/random');
-      
+
       // Emulación local con un objeto
       const mockPokemon = {
         name: 'AA-AA-AA',
@@ -28,12 +33,21 @@ function App() {
       setGameStarted(true);
     } catch (error) {
       console.error(error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="bg-blue-100 h-screen flex items-center justify-center">
-      {gameStarted ? (
+    <div className="app-container">
+      {loading ? (
+        <div className="loading-container">
+          <div className="loading-icon-container">
+            <div className="loading-icon"></div>
+          </div>
+          <p className="loading-text">Cargando...</p>
+        </div>
+      ) : gameStarted ? (
         <Game pokemon={pokemon} />
       ) : (
         <Start onStartGame={handleStartGame} />

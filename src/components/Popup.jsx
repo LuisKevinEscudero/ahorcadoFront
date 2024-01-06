@@ -1,5 +1,6 @@
 // components/Popup.jsx
 import React, { useState } from 'react';
+import '../CSS/popup.css';
 
 const Popup = ({ onClose, onSelectLetter }) => {
   const [selectedLetter, setSelectedLetter] = useState('');
@@ -16,22 +17,23 @@ const Popup = ({ onClose, onSelectLetter }) => {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"  onClick={handleCancel}>
-      <div className="bg-white px-12 p-8 rounded-lg shadow-md overflow-y-auto max-h-96">
-        <div className="flex flex-col items-center mb-4">
-          {/* Renderizar botones para seleccionar letras */}
+    <div className="letter-overlay"  onClick={handleCancel}>
+      <div className="letter-card-container">
+        <div className="letter-flex-container">
           {Array.from('ABCDEFGHIJKLMNOPQRSTUVWXYZ').map((letter) => (
             <button
-              key={letter}
-              className={`my-1 py-2 px-10 text-sm rounded ${selectedLetter === letter ? 'bg-blue-500 text-white' : 'bg-gray-300 text-gray-700'}`}
-              onClick={() => handleLetterClick(letter)}
-            >
+            key={letter}
+            className={`letter-button small-text rounded ${
+              selectedLetter === letter ? 'selected-letter-button' : 'unselected-letter-button'
+            }`}
+            onClick={() => handleLetterClick(letter)}
+          >
               {letter}
             </button>
           ))}
         </div>
-        <div className="mt-4 flex justify-end">
-          <button className="bg-red-500 text-white py-2 px-4 rounded" onClick={handleCancel}>
+        <div className="cancel-button-container">
+          <button className="cancel-button" onClick={handleCancel}>
             Cancelar
           </button>
         </div>

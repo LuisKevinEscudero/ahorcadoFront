@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+@media only screen and (max-width: 600px) {
+  .loading-text {
+    font-size: 14px; /* Ajusta el tamaño del texto para pantallas pequeñas */
+  }
+}

@@ -4,6 +4,7 @@ import Hints from './Hints';
 import GameOverScreen from './GameOverScreen';
 import GameWonScreen from './GameWonScreen';
 import ErrorCounter from './ErrorCounter';
+import '../CSS/game.css'; 
 
 const initializeCorrectLetters = (pokemon) => {
   return Array(pokemon.name.length).fill('_');
@@ -17,6 +18,8 @@ const Game = ({ pokemon: initialPokemon }) => {
   const [errorCount, setErrorCount] = useState(0);
   const [gameWon, setGameWon] = useState(false); // Nuevo estado para controlar la victoria
   const [changePokemon, setChangePokemon] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     if(pokemon.name.includes('-')){
@@ -48,7 +51,7 @@ const Game = ({ pokemon: initialPokemon }) => {
     return name.split('').map((letter, index) => (
       <span
         key={index}
-        className={`ml-6 cursor-pointer hover:shadow-md hover:filter hover:shadow-gray-700`}
+        className={`formatPokemonNameSpan`}
         onClick={() => handleSelectLetter(index)}
         style={{ pointerEvents: correctLetters[index] !== '_' ? 'none' : 'auto' }}
       >
@@ -115,15 +118,21 @@ const Game = ({ pokemon: initialPokemon }) => {
     }
   };
 
+  // En el componente Game
   const handleRestart = async () => {
-    // Lógica de reinicio del juego
-    console.log('Reiniciando el juego...');
-    await apiCall();
+    setIsLoading(true);
+
+    try {
+      // Llamada a la API
+      await apiCall();
+    } catch (error) {
+      console.error(error.message);
+    } finally {
+      setIsLoading(false);
+    }
+
     setShowPopup(false);
     setSelectedPosition(null);
-    console.log('pokemon nuevo:', pokemon.name);
-    
-    console.log('pokemon nuevo2:', pokemon.name);
     setErrorCount(0);
     setGameWon(false);
   };
@@ -140,18 +149,21 @@ const Game = ({ pokemon: initialPokemon }) => {
   }, [correctLetters]);
 
   if (errorCount >= pokemon.name.length) {
-    return <GameOverScreen onRestart={handleRestart} pokemon={pokemon} />;
+    return <GameOverScreen onRestart={handleRestart} pokemon={pokemon} isLoading={isLoading} />;
   }
 
   if (gameWon) {
     console.log('Game won. Redirecting to GameWonScreen...');
-    return <GameWonScreen onRestart={handleRestart} pokemon={pokemon} />;
+    return <GameWonScreen onRestart={handleRestart} pokemon={pokemon} isLoading={isLoading}/>;
   }
 
   return (
-<div className="bg-blue-100 h-screen flex items-center justify-center m-auto">
-  <div className="flex flex-col items-center text-5xl font-bold">
-    <div className="mb-4"> {/* Añadir margen inferior */}
+<div className="firstDiv">
+  <div className="secondDiv">
+    <div className="errorCounterDiv">
+      <ErrorCounter count={errorCount} totalErrors={pokemon.name.length} />
+    </div>
+    <div className="thirdDiv">
       <p>{formatPokemonName(pokemon.name)}</p>
     </div>
     <div>
@@ -162,9 +174,7 @@ const Game = ({ pokemon: initialPokemon }) => {
         />
       )}
     </div>
-    <div className="mb-4"> {/* Añadir margen inferior */}
-      <ErrorCounter count={errorCount} totalErrors={pokemon.name.length} />
-    </div>
+    
     <div>
       <Hints errorCount={errorCount} pokemon={pokemon} />
     </div>

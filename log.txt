@@ -1,0 +1,7 @@
+he puesto animaciones de cargando cuando se hace la llamada a la api
+he cambiado algunos archivos de tailwind css a su propio archivo css, de momento conservan la funcionalidad pero hay que modificar alguno porque no ha quedado igual.(creo que ya estan todos)
+el juego por ejemplo no ocupa toda la pantalla y solo ocupa la longitud de la palabra.(arreglado)
+en popup hay que hacer mas grande los recuadros de las letras (HECHO)
+ahora cuando la pantalla es un movil se adapta a ella.
+añadida la barra de vida.
+añadido que haya un scroll cuando la palabra es muy grande

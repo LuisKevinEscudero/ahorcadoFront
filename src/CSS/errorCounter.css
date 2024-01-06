@@ -1,0 +1,27 @@
+.error-counter {
+  background-color: rgb(255, 255, 255);
+  padding: 0.5rem;
+  border-radius: 0.25rem 0 0.25rem 0;
+}
+
+.error-counter-text {
+  font-size: 14px;
+  color: #cc0000;
+  font-weight: bold;
+}
+
+.barra-vida {
+  width: 200px;
+  height: 20px;
+  border: 1px solid #000;
+  overflow: hidden;
+  margin: 0 auto;
+  border-radius: 0.25rem; /* Redondea la barra completa */
+}
+
+.vida {
+  height: 100%;
+  width: 100%;
+  background-color: #4caf50;
+  transition: width 0.3s ease;
+}
