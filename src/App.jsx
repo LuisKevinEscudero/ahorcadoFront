@@ -14,8 +14,9 @@ function App() {
     try {
       setLoading(true);
 
-      // Llamada a la API comentada
-      const response = await fetch('http://localhost:8080/pokemon/random');
+      // Llamada a la API comentada 
+      //const response = await fetch('http://localhost:8080/pokemon/random');
+      const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
 
       // Emulación local con un objeto
       const mockPokemon = {
