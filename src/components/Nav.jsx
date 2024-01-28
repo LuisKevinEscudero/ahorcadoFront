@@ -12,7 +12,7 @@ const Nav = () => {
         <li><a href="/services">Servicios</a></li>
         <li><a href="/contact">Contacto</a></li>
         <li><a href="/twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>
-        <li><VisitCounter /></li> {/* Agrega el componente VisitCounter directamente aquí */}
+        <li><VisitCounter /></li> 
       </ul>
     </nav>
   );
