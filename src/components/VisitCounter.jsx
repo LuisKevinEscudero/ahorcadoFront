@@ -1,36 +1,27 @@
+// VisitCounter.js
 import React, { useState, useEffect } from 'react';
-import SockJS from 'sockjs-client';
-import Stomp from 'stompjs';
 
 const VisitCounter = () => {
   const [visitCount, setVisitCount] = useState(0);
-  const [visited, setVisited] = useState(false);
 
   useEffect(() => {
-    const socket = new SockJS('http://localhost:8080/ws-endpoint');
-    const stompClient = Stomp.over(socket);
-
-    stompClient.connect({}, () => {
-      stompClient.subscribe('/topic/visitCount', (message) => {
-        const newVisitCount = JSON.parse(message.body);
-        setVisitCount(newVisitCount);
-      });
-
-      if (!visited) {
-        stompClient.send('/app/incrementVisit', {}, '');
-        setVisited(true);
+    // Realiza una llamada al controlador de Spring para obtener el conteo de visitas
+    const fetchVisitCount = async () => {
+      try {
+        const response = await fetch('http://localhost:8080/visit');
+        const data = await response.json();
+        setVisitCount(data);
+      } catch (error) {
+        console.error('Error fetching visit count:', error);
       }
+    };
 
-      return () => {
-        stompClient.disconnect();
-      };
-    });
-  }, [visited]);
+    fetchVisitCount();
+  }, []); // El segundo parámetro [] indica que este efecto se ejecutará solo una vez al montar el componente.
 
   return (
     <div>
-      <h1>Contador de Visitas en Tiempo Real</h1>
-      <p>Visitas: {visitCount}</p>
+      <p>Contador de visitas: {visitCount}</p>
     </div>
   );
 };

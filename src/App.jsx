@@ -4,6 +4,7 @@ import Start from './components/Start';
 import Game from './components/Game';
 import Nav from './components/Nav';
 import './CSS/animations.css'; 
+import VisitCounter from './components/VisitCounter';
 
 
 function App() {
@@ -19,7 +20,7 @@ function App() {
       const response = await fetch('http://localhost:8080/pokemon/random');
       //const response = await fetch('http://localhost:8080/pokemon/startGame');
       //const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
-      const call = await fetch('http://localhost:8080/visit');
+
       // Emulación local con un objeto
       const mockPokemon = {
         name: 'AA-AA-AA',
@@ -44,6 +45,7 @@ function App() {
   return (
     <div className="app-container">
       <Nav />
+
       {loading ? (
         <div className="loading-container">
           <div className="loading-icon-container">

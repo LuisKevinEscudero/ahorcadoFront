@@ -1,6 +1,7 @@
+// Nav.js
 import React from 'react';
+import VisitCounter from './VisitCounter'; // Importa el componente VisitCounter
 import '../CSS/nav.css';
-import VisitCounter from './VisitCounter';
 
 const Nav = () => {
   return (
@@ -11,8 +12,8 @@ const Nav = () => {
         <li><a href="/services">Servicios</a></li>
         <li><a href="/contact">Contacto</a></li>
         <li><a href="/twitter" target="_blank" rel="noopener noreferrer">Twitter</a></li>
+        <li><VisitCounter /></li> {/* Agrega el componente VisitCounter directamente aquí */}
       </ul>
-      <VisitCounter />
     </nav>
   );
 };
