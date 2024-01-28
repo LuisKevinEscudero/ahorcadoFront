@@ -10,7 +10,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #C8DDF0;
   color: black;
-  font-family: 'Pixelify Sans', sans-serif;
+  /*font-family: 'Pixelify Sans', sans-serif;*/
+  /*font-family: 'Roboto', sans-serif;*/
+  font-family: 'Press Start 2P', cursive;
 }
 
 

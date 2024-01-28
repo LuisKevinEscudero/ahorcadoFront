@@ -1,7 +1,8 @@
 // App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Start from './components/Start';
 import Game from './components/Game';
+import Nav from './components/Nav';
 import './CSS/animations.css'; 
 
 
@@ -15,9 +16,10 @@ function App() {
       setLoading(true);
 
       // Llamada a la API comentada 
-      //const response = await fetch('http://localhost:8080/pokemon/random');
-      const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
-
+      const response = await fetch('http://localhost:8080/pokemon/random');
+      //const response = await fetch('http://localhost:8080/pokemon/startGame');
+      //const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
+      const call = await fetch('http://localhost:8080/visit');
       // Emulación local con un objeto
       const mockPokemon = {
         name: 'AA-AA-AA',
@@ -41,6 +43,7 @@ function App() {
 
   return (
     <div className="app-container">
+      <Nav />
       {loading ? (
         <div className="loading-container">
           <div className="loading-icon-container">

@@ -69,3 +69,27 @@
 .thirdDiv {
     margin-bottom: 1rem;
 }
+
+.selectedLettersDiv {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+  margin-bottom: 20px;
+}
+
+.selectedLettersDiv p {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.selectedLettersList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.selectedLettersList li {
+  margin: 5px 0;
+  font-size: 14px;
+}

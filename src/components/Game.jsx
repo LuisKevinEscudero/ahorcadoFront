@@ -19,6 +19,8 @@ const Game = ({ pokemon: initialPokemon }) => {
   const [gameWon, setGameWon] = useState(false); // Nuevo estado para controlar la victoria
   const [changePokemon, setChangePokemon] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [selectedLetters, setSelectedLetters] = useState({});
+
 
 
   useEffect(() => {
@@ -86,7 +88,19 @@ const Game = ({ pokemon: initialPokemon }) => {
           }
           return newErrorCount;
         });
+        
+        setSelectedLetters((prevSelectedLetters) => {
+          const positionKey = selectedPosition.toString();
+          return {
+            ...prevSelectedLetters,
+            [positionKey]: prevSelectedLetters[positionKey]
+              ? `${prevSelectedLetters[positionKey]}, ${letter}`
+              : letter,
+          };
+        });
+        console.log('selectedLetters:', selectedLetters);
       }
+
       setShowPopup(false);
     }
   };
@@ -94,8 +108,9 @@ const Game = ({ pokemon: initialPokemon }) => {
   const apiCall = async () => {
     try {
       // Llamada a la API comentada
-      //const response = await fetch('http://localhost:8080/pokemon/random');
-      const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
+      const response = await fetch('http://localhost:8080/pokemon/random');
+      //const response = await fetch('http://localhost:8080/pokemon/startGame');
+      //const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
       // Emulación local con un objeto
       const mockPokemon = {
         name: 'AA-AA-AA',
@@ -135,6 +150,7 @@ const Game = ({ pokemon: initialPokemon }) => {
     setSelectedPosition(null);
     setErrorCount(0);
     setGameWon(false);
+    setSelectedLetters({});
   };
   
   useEffect(() => {
@@ -160,6 +176,17 @@ const Game = ({ pokemon: initialPokemon }) => {
   return (
 <div className="firstDiv">
   <div className="secondDiv">
+
+  <div className="selectedLettersDiv">
+      <p>Selected Letters:</p>
+      <ul className="selectedLettersList">
+        {Object.entries(selectedLetters).map(([position, letter]) => (
+            <li key={position}>{`Posicion ${parseInt(position) + 1}: ${letter}`}</li>
+        ))}
+      </ul>
+    </div>
+
+
     <div className="errorCounterDiv">
       <ErrorCounter count={errorCount} totalErrors={pokemon.name.length} />
     </div>

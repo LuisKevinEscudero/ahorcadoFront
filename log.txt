@@ -5,3 +5,47 @@ en popup hay que hacer mas grande los recuadros de las letras (HECHO)
 ahora cuando la pantalla es un movil se adapta a ella.
 añadida la barra de vida.
 añadido que haya un scroll cuando la palabra es muy grande
+///////////////////////////////////////////////////
+pistas puestas de forma aleatoria, ademas de que sale una al principio
+-------------------------------------------------------------------------
+he puesto un un div que muestras las letras que se han usado para que no se repitan
+he puesto un nav con botones que hay que hacer funcionar, ademas de cambiarlos por un png 
+tambien he borrado lo del helpers y eliminado el getTypes
+he cambiado el estilo del texto
+he puesto que no se ponga nada debajo del nav y que el nav este fijo
+-------------------------------------------------------------------------
+he puesto que se usen las habilidades como pistas 
+***********************************************************************************
+***********************************************************************************
+cosas que hacer:
+- hacer un login
+- hacer que cuando sale un juego, los datos se guarden en la base de datos y se carguen de forma que aunque se recargue la pagina no se pierda la partida
+- implementar seguridad por perfil de usuario
+- hay que poner un cuadro de pistas todas iguales
+- hacer pantalla de estadisticas cuando se acaba el juego(si se gana o se pierde)
+    - hacer un conteo de las letras que se han usado
+    - hacer un conteo de las pistas que se han usado
+- hacer un sistema de puntos, que se sumen puntos por cada letra acertada y se resten por cada letra fallada
+- hacer mas pistas diferentes
+    - nivel de evolucion
+    - si es legendario o singular
+- hacer un contador de visitas que se actualice en tiempo real cada vez que alguien entre en la pagina
+{
+    Asegúrate de tener las dependencias necesarias:
+Agrega las dependencias de Spring WebSocket a tu archivo pom.xml:
+
+Configura WebSocket en Spring Boot:
+Crea una clase de configuración para habilitar WebSocket en tu aplicación:
+
+Implementa el controlador WebSocket:
+Crea un controlador que maneje la lógica del contador de visitas:
+
+Instala las dependencias necesarias:
+Utiliza npm o yarn para instalar las dependencias de WebSocket en tu aplicación React:
+
+bash
+Copy code
+npm install @stomp/stompjs
+npm install sockjs-client
+}
+

@@ -1,6 +1,7 @@
 .hint-title {
     font-weight: bold;
     color: #001f3f; /* Color azul oscuro */
+    text-align: center;
   }
   
   .hint-content {
@@ -12,7 +13,7 @@
   .hint-title.hint-small {
     font-size: 17px; /* Tamaño de texto más pequeño */
     font-weight: bold;
-    color: #136ac2; /* Color azul oscuro */
+    color: #000000; /* Color azul oscuro */
   }
   
   /* Estilo base para todos los recuadros de pista */
@@ -25,12 +26,13 @@
     padding-left: 2.5rem/* 40px */;
     padding-right: 2.5rem/* 40px */;
     max-width: 90%;
+    align-items: center;
   }
   
   /* Estilo específico para el tipo de pista */
   .type-hint {
-    background-color: #ffd700;
-
+    background-color: #c0c4da;
+    
   }
   
   /* Estilo específico para la pista de región */
@@ -52,3 +54,19 @@
     align-items: center;
   }
   
+  .type-images-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  /* Estilos para cada imagen individual */
+  .type-image {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000000;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }

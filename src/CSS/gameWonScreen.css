@@ -25,8 +25,9 @@
 .playAgainButton{
     background-color: #3498db;
     color: #fff;
-    padding: 10px;
+    padding: 20px 30px;
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    font-size: 2rem;
 }
