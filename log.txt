@@ -49,3 +49,4 @@ npm install @stomp/stompjs
 npm install sockjs-client
 }
 
+para hacer lo de pasar los datos al servidor para que se guardan estan en la conver del chat 0303/2024 al final

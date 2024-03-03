@@ -21,8 +21,6 @@ const Game = ({ pokemon: initialPokemon }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedLetters, setSelectedLetters] = useState({});
 
-
-
   useEffect(() => {
     if(pokemon.name.includes('-')){
       for(let i = 0; i < pokemon.name.length; i++){
@@ -108,9 +106,9 @@ const Game = ({ pokemon: initialPokemon }) => {
   const apiCall = async () => {
     try {
       // Llamada a la API comentada
-      //const response = await fetch('http://localhost:8080/pokemon/random');
+      const response = await fetch('http://localhost:8080/pokemon/random');
       //const response = await fetch('http://localhost:8080/pokemon/startGame');
-      const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
+      //const response = await fetch('https://api-ahorcado.onrender.com/pokemon/random');
       // Emulación local con un objeto
       const mockPokemon = {
         name: 'AA-AA-AA',

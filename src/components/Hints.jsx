@@ -27,10 +27,10 @@ const Hints = ({ pokemon, errorCount }) => {
   const shuffleHints = () => {
     // Crear una copia de las pistas originales y barajarlas
     const originalHints = [
-      { title: "Type", content: pokemon.type.join(', ') },
+      { title: "Type", content: pokemon.type },
       { title: "Region", content: pokemon.region },
       { title: "Description", content: pokemon.description },
-      { title: "Habilidades", content: pokemon.abilities.join(', ')}
+      { title: "Habilidades", content: pokemon.ability}
     ];
 
     const shuffled = [...originalHints]; // Crear una copia superficial antes de barajar
